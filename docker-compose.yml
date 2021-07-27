@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+  dev-do-futuro-mentees-postgres:
+    image: "postgres:13.1-alpine"
+    container_name: dev-do-futuro-mentees-postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    networks: 
+      - dev-do-futuro-mentees-network
+    volumes:
+      - data-storage:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+ 
+networks:
+  dev-do-futuro-mentees-network:
+    
+volumes:
+  data-storage:
