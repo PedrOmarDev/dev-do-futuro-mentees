@@ -6,7 +6,7 @@ import CreateMenteeService from './CreateMenteeService'
 let fakeMenteesRepository: FakeMenteesRepository
 let createMenteeService: CreateMenteeService
 
-describe('CreateAppointment', () => {
+describe('CreateMentee', () => {
   beforeEach(() => {
     fakeMenteesRepository = new FakeMenteesRepository()
     createMenteeService = new CreateMenteeService(fakeMenteesRepository)
@@ -16,8 +16,8 @@ describe('CreateAppointment', () => {
     const mentee = await createMenteeService.execute({
       name: 'John Doe',
       description: 'A nice guy',
-      github_link: 'http://github.com/aNiceGuyDev',
       linkedin_link: 'http://linkedin.com/aNiceGuyDev',
+      github_link: 'http://github.com/aNiceGuyDev',
     })
 
     expect(mentee).toHaveProperty('id')
