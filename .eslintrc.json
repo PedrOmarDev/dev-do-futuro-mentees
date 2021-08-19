@@ -28,6 +28,7 @@
 			"argsIgnorePattern": "_"
 		}],
 		"no-useless-constructor": "off",
+		"no-extra-boolean-cast":"off",
 		"import/extensions": [
 			"error",
 			"ignorePackages",
