@@ -7,6 +7,12 @@ import ISkillsRepository from '../ISkillsRepository'
 export default class FakeSkillsRepository implements ISkillsRepository {
   private skills: Skill[] = []
 
+  public async findById(skill_id: string): Promise<Skill | undefined> {
+    const skill = this.skills.find(skill => skill.id === skill_id)
+
+    return skill
+  }
+
   public async create({ name, mode }: ICreateSkillDTO): Promise<Skill> {
     const skill = new Skill()
 

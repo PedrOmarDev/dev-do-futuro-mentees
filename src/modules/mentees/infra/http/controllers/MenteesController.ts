@@ -6,6 +6,7 @@ import ShowMenteeService from '@modules/mentees/services/ShowMenteeService'
 import CreateMenteeService from '@modules/mentees/services/CreateMenteeService'
 import UpdateMenteeService from '@modules/mentees/services/UpdateMenteeService'
 import RemoveMenteeService from '@modules/mentees/services/RemoveMenteeService'
+import UpdateMenteeSkillsService from '@modules/mentees/services/UpdateMenteeSkillsService'
 
 export default class MenteesController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -70,5 +71,22 @@ export default class MenteesController {
     })
 
     return response.status(204).json()
+  }
+
+  public async updateSkills(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { mentee_id } = request.params
+    const { skill_ids } = request.body
+
+    const updateMenteeSkills = container.resolve(UpdateMenteeSkillsService)
+
+    const updated_mentee = await updateMenteeSkills.execute({
+      mentee_id,
+      skill_ids,
+    })
+
+    return response.status(200).json(updated_mentee)
   }
 }

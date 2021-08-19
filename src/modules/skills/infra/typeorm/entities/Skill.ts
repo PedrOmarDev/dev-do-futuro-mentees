@@ -1,3 +1,4 @@
+import Mentee from '@modules/mentees/infra/typeorm/entities/Mentee'
 import { TypeSkill } from '@modules/skills/enums/TypeSkillEnum'
 
 import {
@@ -6,6 +7,8 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm'
 
 @Entity('skills')
@@ -27,4 +30,18 @@ export default class Skill {
 
   @UpdateDateColumn()
   updated_at: Date
+
+  @ManyToMany(() => Mentee)
+  @JoinTable({
+    name: 'mentees_skills',
+    joinColumn: {
+      name: 'skill_id',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'mentee_id',
+      referencedColumnName: 'id',
+    },
+  })
+  mentees: Mentee[]
 }
