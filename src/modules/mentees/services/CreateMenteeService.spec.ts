@@ -1,8 +1,6 @@
 import FakeMenteesRepository from '../repositories/fakes/FakeMenteesRepository'
 import CreateMenteeService from './CreateMenteeService'
 
-// import AppError from '@shared/errors/AppError'
-
 let fakeMenteesRepository: FakeMenteesRepository
 let createMenteeService: CreateMenteeService
 

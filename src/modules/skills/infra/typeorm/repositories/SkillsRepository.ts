@@ -17,6 +17,14 @@ export default class SkillsRepository implements ISkillsRepository {
     return skill
   }
 
+  async findByName(name: string): Promise<Skill | undefined> {
+    const skill = await this.ormRepository.findOne({
+      where: { name },
+    })
+
+    return skill
+  }
+
   async create({ name, mode }: ICreateSkillDTO): Promise<Skill> {
     const skill = this.ormRepository.create({
       name,

@@ -1,7 +1,5 @@
 import { inject, injectable } from 'tsyringe'
 
-// import AppError from '@shared/errors/AppError'
-
 import Mentee from '../infra/typeorm/entities/Mentee'
 import IMenteesRepository from '../repositories/IMenteesRepository'
 import ICreateMenteeDTO from '../dtos/ICreateMenteeDTO'

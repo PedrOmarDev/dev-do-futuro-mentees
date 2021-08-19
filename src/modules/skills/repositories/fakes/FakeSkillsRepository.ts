@@ -13,6 +13,12 @@ export default class FakeSkillsRepository implements ISkillsRepository {
     return skill
   }
 
+  public async findByName(name: string): Promise<Skill | undefined> {
+    const skill = this.skills.find(skill => skill.name === name)
+
+    return skill
+  }
+
   public async create({ name, mode }: ICreateSkillDTO): Promise<Skill> {
     const skill = new Skill()
 
